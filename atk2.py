@@ -537,8 +537,8 @@ def check_socks(ms):#Coded by BlueSkyXN
 		th.join()
 		sys.stdout.write("> Checked "+str(nums)+" proxies\r")
 		sys.stdout.flush()
-	print("\r\n> Checked all proxies, Total Worked:"+str(len(proxies)))
-	ans = input("> Do u want to save them in a file? (y/n, default=y)")
+	print("\r\n> 检查了所有代理，总工作:"+str(len(proxies)))
+	ans = input("> 你想把它们保存在文件中吗？ (y/n, default=y)")
 	if ans == "y" or ans == "":
 		if choice == "4":
 			with open("socks4.txt", 'wb') as fp:
