@@ -30,7 +30,7 @@ Version 3.6 (2020/12/19)
 │        Tos: Don't attack ANY website        │
 ├─────────────────────────────────────────────┤
 │                 New stuff:                  │
-│          [+] Optimization                   │
+│          [+] 优化                   │
 │          [+] Changed Output                 │
 │          [+] Added Url Parser               │
 ├─────────────────────────────────────────────┤
@@ -209,20 +209,20 @@ def InputOption(question,options,default):
 		if ans == "":
 			ans = default
 		elif ans not in options:
-			print("> Please enter the correct option")
+			print("> 请输入正确的选项")
 			ans = ""
 			continue
 	return ans
 
 def CheckerOption():
 	global proxies
-	N = str(input("> Do you need to get socks list?(y/n,default=y):"))
+	N = str(input("> 你需要拿到socks列表吗？(y/n,default=y):"))
 	if N == 'y' or N == "" :
 		downloadsocks(choice)
 	else:
 		pass
 	if choice == "4":
-		out_file = str(input("> Socks4 Proxy file path(socks4.txt):"))
+		out_file = str(input("> Socks4代理文件路径(socks4.txt):"))
 		if out_file == '':
 			out_file = str("socks4.txt")
 		else:
@@ -230,7 +230,7 @@ def CheckerOption():
 		check_list(out_file)
 		proxies = open(out_file).readlines()
 	elif choice == "5":
-		out_file = str(input("> Socks5 Proxy file path(socks5.txt):"))
+		out_file = str(input("> Socks5 代理文件路径(socks5.txt):"))
 		if out_file == '':
 			out_file = str("socks5.txt")
 		else:
@@ -238,15 +238,15 @@ def CheckerOption():
 		check_list(out_file)
 		proxies = open(out_file).readlines()
 	if len(proxies) == 0:
-		print("> There are no more proxies. Please download a new one.")
+		print("> 不再有代理了。请下载一个新的。")
 		sys.exit(1)
-	print ("> Number Of Socks%s Proxies: %s" %(choice,len(proxies)))
+	print ("> Socks数量 %s 代理: %s" %(choice,len(proxies)))
 	time.sleep(0.03)
-	ans = str(input("> Do u need to check the socks list?(y/n, defualt=y):"))
+	ans = str(input("> 你需要查看socks列表吗?(y/n, defualt=y):"))
 	if ans == "":
 		ans = "y"
 	if ans == "y":
-		ms = str(input("> Delay of socks(seconds, default=5):"))
+		ms = str(input("> socks的延迟(seconds, default=5):"))
 		if ms == "":
 			ms = int(5)
 		else :
@@ -268,7 +268,7 @@ def OutputToScreen(ind_rlock):
 	while 1:
 		if i > 3:
 			i = 0
-		print("{:^70}".format("Proxies attacking status"))
+		print("{:^70}".format("代理攻击状态"))
 		print("{:^70}".format("IP:PORT   <->   RPS    "))
 		#1. xxx.xxx.xxx.xxx:xxxxx ==> Rps: xxxx
 		ind_rlock.acquire()
