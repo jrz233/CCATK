@@ -242,7 +242,7 @@ def CheckerOption():
 		sys.exit(1)
 	print ("> Socks数量 %s 代理: %s" %(choice,len(proxies)))
 	time.sleep(0.03)
-	ans = str(input("> 你需要查看socks列表吗?(y/n, defualt=y):"))
+	ans = str(input("> 你需要检查socks列表吗?(y/n, defualt=y):"))
 	if ans == "":
 		ans = "y"
 	if ans == "y":
